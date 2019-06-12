@@ -4,6 +4,9 @@
 
 import datetime
 
+def to_usd(my_price): #price formatting from groceeries exercise
+    return "${0:,.2f}".format(my_price)
+
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
     {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
@@ -34,13 +37,20 @@ products = [
 
 products_count = len(products)
 now = datetime.datetime.now() # current date and time. code from https://www.w3resource.com/python-exercises/python-basic-exercise-3.php
+
 print ('-------------------------------')
 print ("TRADER JOES'S") #handling apostrophe's in stringshttps://stackoverflow.com/questions/14104728/not-able-to-print-statements-with-apostrophe-in-it-in-python-invalid-syntax-e
 print ('555 9th Street') #sample receipt https://www.google.com/imgres?imgurl=https://c1.staticflickr.com/1/32/64253187_429175fba8_b.jpg&imgrefurl=https://www.flickr.com/photos/evang/64253187&h=1024&w=768&tbnid=rgRZZTB5iixMNM&q=trader+joe%27s+receipt&tbnh=150&tbnw=113&usg=AI4_-kSDL59GpSZXawvPomxmAKFxum2sUg&vet=1&docid=jzZEjP2nNwMAHM&itg=1&sa=X&ved=2ahUKEwiM_8rk8OTiAhUMTN8KHabQB6IQ_h0wE3oECA0QBA#h=1024&imgdii=l4siABnz7GxBFM:&tbnh=150&tbnw=113&vet=1&w=768
 print ('SAN FRANCISCO, CA 94103')
 print ('STORE #078 - (415) 863-1292')
 print ('-------------------------------')
-print ('CHECKOUT AT: now.strftime("%Y-%m-%d %H:%M:%S")')
+print (now.strftime("%Y-%m-%d %H:%M:%S"))
 print ('-------------------------------')
+print ('SELECTED PRODUCTS:')
 
+for item in products: 
+    price_usd = to_usd(item['price'])
+    print(f"{item['name']} ... {price_usd}")
+
+#  
 
