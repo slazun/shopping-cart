@@ -34,8 +34,14 @@ products = [
 # pprint(products)
 
 # TODO: write some Python code here to produce the desired output
+product_list = []
+product_id = "x"
+while product_id != "DONE":
+    product_id = input('Please input a product identifier or enter DONE:') #http://introtopython.org/while_input.html
+    product_list.append(product_id)
+print(product_list)
 
-products_count = len(products)
+#products_count = len(products)
 now = datetime.datetime.now() # current date and time. code from https://www.w3resource.com/python-exercises/python-basic-exercise-3.php
 
 print ('-------------------------------')
@@ -48,9 +54,9 @@ print (now.strftime("%Y-%m-%d %H:%M:%S"))
 print ('-------------------------------')
 print ('SELECTED PRODUCTS:')
 
-for item in products: 
-    price_usd = to_usd(item['price'])
-    print(f"{item['name']} ... {price_usd}")
+#for item in products: 
+ #   price_usd = to_usd(item['price'])
+  #  print(f"{item['name']} ... {price_usd}")
 
 #  
 
