@@ -3,8 +3,7 @@
 #from pprint import pprint
 
 import datetime
-import statistics
-subtotal = 0
+
 def to_usd(my_price): #price formatting from groceeries exercise
     return "${0:,.2f}".format(my_price)
 
@@ -41,7 +40,11 @@ products = [
     #id = input('Please input a product id or enter DONE:') #http://introtopython.org/while_input.html
     #product_list.append(id)
 #print(product_list)
+subtotal = 0
+tax_rate = 0.08875
+
 valid_ids = [str(p["id"]) for p in products]
+#print(valid_ids)
 selected_ids = []
 while True:
     selected_id = input("Please input a product id or enter 'DONE' if complete:")
@@ -68,19 +71,23 @@ print ('SELECTED PRODUCTS:')
     #if p['id'] in product_list:
         #print("product_list['name'] + " " + str(product_list['price_usd'])")
 
-matching_products = [p for p in products if p["id"] in product_list]
+matching_products = [p for p in products if str(p["id"]) in selected_ids]
+#print(selected_ids)
 #print(matching_products)
 matching_product = matching_products[0]
-for p in matching_products:
-    price_usd = to_usd(matching_product["price"])
-    #print(price_usd)
-print(matching_product["name"] + " " + str(matching_product["price_usd"]))
+subtotal = subtotal + matching_product["price"]
+for p in products:
+    price_usd = to_usd(p["price"])
+    #print(price_usd)  
+print(matching_product["name"] + " " + str(matching_product["price"]))
 
-print('SUBTOTAL:', subtotal)
-tax = subtotal * 0.08875
-print('TAX:', tax)
-total = subtotal + tax
-print('TOTAL:', total)
+print('SUBTOTAL: ' + str(subtotal))
+
+tax = subtotal * tax_rate
+print("TAX: " + str(tax))
+
+total = subtotal + tax 
+print("TOTAL: " + str(total))
 
 print('THANK YOU FOR SHOPPING WITH US. WE HOPE TO SEE YOU SOON!')
 
