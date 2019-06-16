@@ -70,26 +70,25 @@ print ('SELECTED PRODUCTS:')
 # tried this first p for p in products: #help from https://goodcode.io/articles/python-dict-object/
     #if p['id'] in product_list:
         #print("product_list['name'] + " " + str(product_list['price_usd'])")
-
-matching_products = [p for p in products if str(p["id"]) in selected_ids]
+for selected_id in selected_ids:
+    matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
 #print(selected_ids)
 #print(matching_products)
-matching_product = matching_products[0]
-subtotal = subtotal + matching_product["price"]
-for p in products:
-    price_usd = to_usd(p["price"])
-    #print(price_usd)  
-print(matching_product["name"] + " " + str(matching_product["price"]))
-
+    matching_product = matching_products[0]
+    subtotal = subtotal + matching_product["price"]
+    price_usd = to_usd(matching_product["price"]) 
+    print(matching_product["name"] + "...." + str(price_usd))
+print ('-------------------------------')
 print('SUBTOTAL: ' + str(subtotal))
 
 tax = subtotal * tax_rate
 print("TAX: " + str(tax))
-
+#need to round/make USD
 total = subtotal + tax 
 print("TOTAL: " + str(total))
-
+print ('-------------------------------')
 print('THANK YOU FOR SHOPPING WITH US. WE HOPE TO SEE YOU SOON!')
+print ('-------------------------------')
 
 
 
