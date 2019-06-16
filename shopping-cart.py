@@ -7,6 +7,7 @@ import datetime
 def to_usd(my_price): #price formatting from groceeries exercise
     return "${0:,.2f}".format(my_price)
 
+
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
     {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
@@ -79,21 +80,21 @@ for selected_id in selected_ids:
     price_usd = to_usd(matching_product["price"]) 
     print(matching_product["name"] + "...." + str(price_usd))
 print ('-------------------------------')
-print('SUBTOTAL: ' + str(subtotal))
+subtotal_usd = to_usd(subtotal) 
+print('SUBTOTAL: ' + str(subtotal_usd))
 
 tax = subtotal * tax_rate
-print("TAX: " + str(tax))
-#need to round/make USD
+tax_usd = to_usd(tax)
+print("TAX: " + str(tax_usd))
+
 total = subtotal + tax 
-print("TOTAL: " + str(total))
+total_usd = to_usd(total)
+print("TOTAL: " + str(total_usd))
 print ('-------------------------------')
 print('THANK YOU FOR SHOPPING WITH US. WE HOPE TO SEE YOU SOON!')
 print ('-------------------------------')
 
 
 
-#for item in products: 
- #   price_usd = to_usd(item['price'])
-  #  print(f"{item['name']} ... {price_usd}")
 
 
